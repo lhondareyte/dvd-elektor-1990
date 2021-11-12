@@ -5,13 +5,18 @@ Il ne contient aucune donnée présente sur [le DVD de l'éditeur](https://www.e
 
 ## Installation
 
-Copiez le contenu du DVD dans un dossier de votre serveur HTTP:
+Clonez ce dépôt à la racine de votre serveur HTTP (DocumentRoot)
+```
+  cd ${DocumentRoot}
+  git clone https://github.com/lhondareyte/dvd-elektor-1990.git Elektor-1990
+```
+
+Copiez le contenu du DVD dans le dossier:
 
 Sous FreeBSD:
 ```
   mount -t cd9660 /dev/cd0 /mnt ; cd /mnt
-  mkdir ${DocumentRoot}/Elektor-90
-  find . -print | cpio -pdvmu ${DocumentRoot}/Elektor-90
+  find . -print | cpio -pdvmu ${DocumentRoot}/Elektor-1990
   cd - && umount /mnt
   camcontrol eject cd0
 ```
@@ -19,19 +24,12 @@ Sous FreeBSD:
 Sous Linux:
 ```
   mount -t iso9660 /dev/scd0 /mnt ; cd /mnt
-  mkdir ${DocumentRoot}/Elektor-90
-  find . -print | cpio -pdvmu ${DocumentRoot}/Elektor-90
+  find . -print | cpio -pdvmu ${DocumentRoot}/Elektor-1990
   cd - && umount /mnt
   eject /dev/scd0
 ```
 
-Puis 
-```
-  cd ${DocumentRoot}/Elektor-90
-  git clone https://github.com/lhondareyte/dvd-elektor-90.git
-```
-
 Vous pouvez supprimer tous les programmes obsolètes ou inutiles avec la commande:
 ```
-  make clean
+  cd ${DocumentRoot}/Elektor-1990 && make clean
 ```
